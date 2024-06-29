@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ecommerce-platform
+    ports:
+      - "5432:5432"
+
+  user-service:
+    build: ./
+    environment:
+      DATABASE_URL: postgres://postgres:password@postgres:5432/ecommerce-platform?sslmode=disable
+      JWT_SECRET: your_jwt_secret
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
