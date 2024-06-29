@@ -1,6 +1,6 @@
 module github.com/Irfan-Ayub/ecommerce-platform/user-service
 
-go 1.22.3
+go 1.22
 
 require (
 	github.com/gorilla/mux v1.8.1
