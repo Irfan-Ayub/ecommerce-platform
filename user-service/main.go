@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/Irfan-Ayub/ecommerce-platform/user-service/handlers"
+	"github.com/Irfan-Ayub/ecommerce-platform/user-service/models"
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
@@ -27,7 +28,7 @@ func main() {
 	}
 
 	// Auto migrate User Model
-	// db.AutoMigrate(&models.User{})
+	db.AutoMigrate(&models.User{})
 	router := mux.NewRouter()
 	router.HandleFunc("/signup", handlers.Signup(db)).Methods("POST")
 	router.HandleFunc("/login", handlers.Login(db)).Methods("POST")
